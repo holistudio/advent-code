@@ -2,7 +2,7 @@ programs = ['a','b','c','d','e']
 
 moves = ['s1', 'x3/4', 'pe/b']
 
-def spin(lineup: list, amount_of_moves: int):
+def spin(lineup: list, num_moves: int):
     '''Counting from the end, grab x letters from the end based on amount of moves and move to front'''
     return lineup
 
