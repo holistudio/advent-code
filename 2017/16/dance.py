@@ -33,6 +33,30 @@ def partner(lineup: list, a: str, b: str):
     lineup = exchange(lineup, location_a, location_b)
     return lineup
 
+def parse_move(move: str):
+    # get move type based on the first letter
+    move_type = move[0]
+
+    # create a list of parameters based on move_type
+    if move_type == 's':
+        print(f'Move: {move}\n')
+        X = int(move[1:])
+        return [move_type, X]
+    elif move_type == 'x':
+        print(f'Move: {move}\n')
+        move_components = move[1:]
+        A = int(move_components.split('/')[0])
+        B = int(move_components.split('/')[1])
+        return [move_type, A, B]
+    elif move_type == 'p':
+        print(f'Move: {move}\n')
+        move_components = move[1:]
+        A = move_components.split('/')[0]
+        B = move_components.split('/')[1]
+        return [move_type, A, B]
+    else:
+        return ValueError('Dance move not recognized...')
+
 def test_spin(lineup: list, move: str):
     print(f'Original\n{lineup}')
     move_type = move[0]
