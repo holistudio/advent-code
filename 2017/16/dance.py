@@ -51,7 +51,7 @@ def parse_move(move: str):
 
     # check parsed_moves has the move string already
     if move in parsed_moves.keys():
-        print("WE'VE BEEN HERE!")
+        # print("WE'VE BEEN HERE!")
         move_type = parsed_moves[move]["move_type"]
         parameters = parsed_moves[move]["parameters"]
         return move_type, parameters
@@ -149,4 +149,4 @@ if __name__ == "__main__":
 
     main(programs, moves)
 
-    print(parsed_moves)
+    # print(parsed_moves)
