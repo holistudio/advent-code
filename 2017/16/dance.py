@@ -39,54 +39,48 @@ def parse_move(move: str):
 
     # create a list of parameters based on move_type
     if move_type == 's':
-        print(f'Move: {move}\n')
         X = int(move[1:])
-        return [move_type, X]
+        return move_type, X
     elif move_type == 'x':
-        print(f'Move: {move}\n')
         move_components = move[1:]
         A = int(move_components.split('/')[0])
         B = int(move_components.split('/')[1])
-        return [move_type, A, B]
+        return move_type, (A, B)
     elif move_type == 'p':
-        print(f'Move: {move}\n')
         move_components = move[1:]
         A = move_components.split('/')[0]
         B = move_components.split('/')[1]
-        return [move_type, A, B]
+        return move_type, (A, B)
     else:
         return ValueError('Dance move not recognized...')
 
 def test_spin(lineup: list, move: str):
     print(f'Original\n{lineup}')
-    move_type = move[0]
+    move_type, parameters = parse_move(move)
     if move_type == 's':
         print(f'Move: {move}\n')
-        X = int(move[1:])
+        X = parameters
         new_lineup = spin(lineup, X)
         print(f'Result\n{new_lineup}\n\n')
         return new_lineup
 
 def test_exchange(lineup: list, move: str):
     print(f'Original\n{lineup}')
-    move_type = move[0]
+    move_type, parameters = parse_move(move)
     if move_type == 'x':
         print(f'Move: {move}\n')
-        move_components = move[1:]
-        A = int(move_components.split('/')[0])
-        B = int(move_components.split('/')[1])
+        A, B = parameters
         new_lineup = exchange(lineup, A, B)
         print(f'Result\n{new_lineup}\n\n')
         return new_lineup
 
 def test_partner(lineup: list, move: str):
     print(f'Original\n{lineup}')
-    move_type = move[0]
+    move_type, parameters = parse_move(move)
     if move_type == 'p':
         print(f'Move: {move}\n')
         move_components = move[1:]
-        A = move_components.split('/')[0]
-        B = move_components.split('/')[1]
+        A, B = parameters
         new_lineup = partner(lineup, A, B)
         print(f'Result\n{new_lineup}\n\n')
         return new_lineup
