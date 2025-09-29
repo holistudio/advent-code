@@ -41,6 +41,7 @@ def test_spin(lineup: list, move: str):
         X = int(move[1:])
         new_lineup = spin(lineup, X)
         print(f'Result\n{new_lineup}\n\n')
+        return new_lineup
 
 def test_exchange(lineup: list, move: str):
     print(f'Original\n{lineup}')
@@ -52,6 +53,7 @@ def test_exchange(lineup: list, move: str):
         B = int(move_components.split('/')[1])
         new_lineup = exchange(lineup, A, B)
         print(f'Result\n{new_lineup}\n\n')
+        return new_lineup
 
 def test_partner(lineup: list, move: str):
     print(f'Original\n{lineup}')
@@ -63,6 +65,7 @@ def test_partner(lineup: list, move: str):
         B = move_components.split('/')[1]
         new_lineup = partner(lineup, A, B)
         print(f'Result\n{new_lineup}\n\n')
+        return new_lineup
 
 def main():
     # given list of moves
