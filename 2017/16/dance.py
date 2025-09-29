@@ -1,6 +1,4 @@
-programs = ['a','b','c','d','e']
 
-moves = ['s1', 'x3/4', 'pe/b']
 
 def spin(lineup: list, X: int):
     '''Counting from the end, grab X programs from the end and move to front'''
@@ -34,6 +32,9 @@ def partner(lineup: list, a: str, b: str):
     return lineup
 
 def parse_move(move: str):
+    # NOTE: Revisit
+    # - can we reduce the number of if statement checks?
+    # - how do we not repeated parse the same command?
     # get move type based on the first letter
     move_type = move[0]
 
@@ -86,19 +87,32 @@ def test_partner(lineup: list, move: str):
         return new_lineup
 
 def main():
-    # given list of moves
+    programs = ['a','b','c','d','e']
+    moves = ['s1', 'x3/4', 'pe/b']
+    print(f'Original\n{programs}\n')
 
-    # parse the string that describes each move
-    # NOTE: re-visit efficient way to do it
+    # for each move
+    for move in moves:
+        # parse the string that describes each move
+        # NOTE: re-visit efficient way to do it
+        move_type, parameters = parse_move(move)
 
-
-    # call the corresponding function spin/exchange/partner
-    # with the parameters
-
-    # programs = spin(programs, a)
+        # call the corresponding function spin/exchange/partner
+        # with the parameters
+        if move_type == 's':
+            X = parameters
+            programs = spin(programs, X)
+        elif (move_type == 'x'):
+            A, B = parameters
+            programs = exchange(programs, A, B)
+        elif (move_type == 'p'):
+            A, B = parameters
+            programs = partner(programs, A, B)
+    print(f'Result\n{programs}')
     pass
 
 if __name__ == "__main__":
-    line = test_spin(programs, 's1')
-    line = test_exchange(line, 'x3/4')
-    line = test_partner(line, 'pe/b')
+    # line = test_spin(programs, 's1')
+    # line = test_exchange(line, 'x3/4')
+    # line = test_partner(line, 'pe/b')
+    main()
