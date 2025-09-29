@@ -2,8 +2,14 @@ programs = ['a','b','c','d','e']
 
 moves = ['s1', 'x3/4', 'pe/b']
 
-def spin(lineup: list, num_moves: int):
-    '''Counting from the end, grab x letters from the end based on amount of moves and move to front'''
+def spin(lineup: list, X: int):
+    '''Counting from the end, grab X programs from the end and move to front'''
+    # split list into two parts, counting from the end
+    front = lineup[:-X]
+    back = lineup[-X:]
+
+    # swap the front and back into a new list
+    lineup = back + front
     return lineup
 
 def exchange(lineup: list, a: int, b: int):
