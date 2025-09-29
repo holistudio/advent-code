@@ -33,6 +33,15 @@ def partner(lineup: list, a: str, b: str):
     lineup = exchange(lineup, location_a, location_b)
     return lineup
 
+def test_spin(lineup: list, move: str):
+    print(f'Original\n{lineup}')
+    move_type = move[0]
+    if move_type == 's':
+        print(f'Move: {move}\n')
+        X = int(move[1:])
+        new_lineup = spin(lineup, X)
+        print(f'Result\n{new_lineup}\n\n')
+
 def main():
     # given list of moves
 
@@ -45,3 +54,7 @@ def main():
 
     # programs = spin(programs, a)
     pass
+
+if __name__ == "__main__":
+    test_spin(programs, 's1')
+    test_spin(programs, 's3')
