@@ -6,7 +6,7 @@ def spin(lineup: list, amount_of_moves: int):
     '''Counting from the end, grab x letters from the end based on amount of moves and move to front'''
     return lineup
 
-def exchange(lineup: list, a: int, b:int):
+def exchange(lineup: list, a: int, b: int):
     '''Swapping based on position in the lineup'''
     # get programs at each location
     program_a = lineup[a]
@@ -17,7 +17,7 @@ def exchange(lineup: list, a: int, b:int):
     lineup[b] = program_a
     return lineup
 
-def partner(lineup: list, a: str, b:str):
+def partner(lineup: list, a: str, b: str):
     '''Swapping based on name in the lineup'''
     # find the index of program
     location_a = lineup.index(a)
