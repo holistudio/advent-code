@@ -81,7 +81,6 @@ def main():
     pass
 
 if __name__ == "__main__":
-    # test_spin(programs, 's1')
-    # test_spin(programs, 's3')
-    # test_exchange(programs, 'x3/4')
-    test_partner(programs, 'pe/b')
+    line = test_spin(programs, 's1')
+    line = test_exchange(line, 'x3/4')
+    line = test_partner(line, 'pe/b')
