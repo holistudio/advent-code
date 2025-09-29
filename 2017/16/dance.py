@@ -118,7 +118,7 @@ def test_partner(lineup: list, move: str):
 
 def main(programs, moves):
 
-    print(f'Original\n{programs}\n')
+    print(f'Original\n{"".join(programs)}\n')
 
     # for each move
     for move in moves:
@@ -138,7 +138,7 @@ def main(programs, moves):
             A, B = parameters
             programs = partner(programs, A, B)
 
-    print(f'Result\n{programs}')
+    print(f'Result\n{"".join(programs)}')
     pass
 
 if __name__ == "__main__":
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     # moves = ['s1', 'x3/4', 'pe/b', 'x3/4']
 
     programs = [chr(x) for x in range(97,97+16)]
-    
+
     # read input.txt
     moves = read_input('input.txt')
     # moves = ['s1', 'x3/4', 'pe/b']
