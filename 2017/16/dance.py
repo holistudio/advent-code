@@ -86,9 +86,8 @@ def test_partner(lineup: list, move: str):
         print(f'Result\n{new_lineup}\n\n')
         return new_lineup
 
-def main():
-    programs = ['a','b','c','d','e']
-    moves = ['s1', 'x3/4', 'pe/b']
+def main(programs, moves):
+
     print(f'Original\n{programs}\n')
 
     # for each move
@@ -108,6 +107,7 @@ def main():
         elif (move_type == 'p'):
             A, B = parameters
             programs = partner(programs, A, B)
+
     print(f'Result\n{programs}')
     pass
 
@@ -115,4 +115,11 @@ if __name__ == "__main__":
     # line = test_spin(programs, 's1')
     # line = test_exchange(line, 'x3/4')
     # line = test_partner(line, 'pe/b')
-    main()
+
+    # programs = ['a','b','c','d','e']
+    # moves = ['s1', 'x3/4', 'pe/b']
+
+    programs = [chr(x) for x in range(97,97+16)]
+    moves = ['s1', 'x3/4', 'pe/b']
+
+    main(programs, moves)
