@@ -85,7 +85,7 @@ def parse_move(move: str):
         else:
             return ValueError('Dance move not recognized...')
 
-def main(programs, moves):
+def main(programs: list, moves: list):
 
     print(f'Original\n{"".join(programs)}\n')
 
