@@ -85,27 +85,31 @@ def parse_move(move: str):
         else:
             return ValueError('Dance move not recognized...')
 
+def make_move(lineup: list, move: str):
+    # parse the string that describes each move
+    move_type, parameters = parse_move(move)
+
+    # call the corresponding function spin/exchange/partner
+    # with the parameters
+    if move_type == 's':
+        X = parameters
+        lineup = spin(lineup, X)
+    elif (move_type == 'x'):
+        A, B = parameters
+        lineup = exchange(lineup, A, B)
+    elif (move_type == 'p'):
+        A, B = parameters
+        lineup = partner(lineup, A, B)
+    return lineup
+    
+
 def main(programs: list, moves: list):
 
     print(f'Original\n{"".join(programs)}\n')
 
     # for each move
     for move in moves:
-        # parse the string that describes each move
-        # NOTE: re-visit efficient way to do it
-        move_type, parameters = parse_move(move)
-
-        # call the corresponding function spin/exchange/partner
-        # with the parameters
-        if move_type == 's':
-            X = parameters
-            programs = spin(programs, X)
-        elif (move_type == 'x'):
-            A, B = parameters
-            programs = exchange(programs, A, B)
-        elif (move_type == 'p'):
-            A, B = parameters
-            programs = partner(programs, A, B)
+        programs = make_move(programs, move)
 
     print(f'Result\n{"".join(programs)}')
     pass
