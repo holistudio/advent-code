@@ -102,11 +102,36 @@ def make_move(lineup: list, move: str):
         A, B = parameters
         lineup = partner(lineup, A, B)
     return lineup
+
+def same_move(lineup: list, move: str):
+    # if it's guaranteed the dance only contains moves seen before
+    # only use the dictionary to "parse"
+    move_type = parsed_moves[move]["move_type"]
+    parameters = parsed_moves[move]["parameters"]
+
+    # call the corresponding function spin/exchange/partner
+    # with the parameters
+    if move_type == 's':
+        X = parameters
+        lineup = spin(lineup, X)
+    elif (move_type == 'x'):
+        A, B = parameters
+        lineup = exchange(lineup, A, B)
+    elif (move_type == 'p'):
+        A, B = parameters
+        lineup = partner(lineup, A, B)
+    return lineup
     
-def dance (lineup: list, moves: list):
+def dance(lineup: list, moves: list):
     # for each move
     for move in moves:
         lineup = make_move(lineup, move)
+    return lineup
+
+def same_dance(lineup: list, moves: list):
+    # for each move
+    for move in moves:
+        lineup = same_move(lineup, move)
     return lineup
 
 def main():
@@ -126,7 +151,7 @@ def main():
     # including the first dance, a total of one billion (1000000000) times.
     start_time = datetime.datetime.now()
     for i in range(1000000000-1):
-        programs = dance(programs, moves)
+        programs = same_dance(programs, moves)
         if i % 1000 == 0:
 
             print(i, datetime.datetime.now()-start_time)
