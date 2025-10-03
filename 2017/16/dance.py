@@ -116,7 +116,7 @@ def main():
     for move in moves:
         programs = make_move(programs, move)
 
-    print(f'Result\n{"".join(programs)}')
+    print(f'Part 1 Result\n{"".join(programs)}')
     pass
 
 if __name__ == "__main__":
