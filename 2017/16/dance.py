@@ -103,7 +103,12 @@ def make_move(lineup: list, move: str):
     return lineup
     
 
-def main(programs: list, moves: list):
+def main():
+    # given list of programs a-p
+    programs = [chr(x) for x in range(97,97+16)]
+
+    # read input.txt
+    moves = read_input('input.txt')
 
     print(f'Original\n{"".join(programs)}\n')
 
@@ -115,10 +120,4 @@ def main(programs: list, moves: list):
     pass
 
 if __name__ == "__main__":
-    # given list of programs a-p
-    programs = [chr(x) for x in range(97,97+16)]
-
-    # read input.txt
-    moves = read_input('input.txt')
-
-    main(programs, moves)
+    main()
