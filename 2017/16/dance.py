@@ -85,37 +85,6 @@ def parse_move(move: str):
         else:
             return ValueError('Dance move not recognized...')
 
-def test_spin(lineup: list, move: str):
-    print(f'Original\n{lineup}')
-    move_type, parameters = parse_move(move)
-    if move_type == 's':
-        print(f'Move: {move}\n')
-        X = parameters
-        new_lineup = spin(lineup, X)
-        print(f'Result\n{new_lineup}\n\n')
-        return new_lineup
-
-def test_exchange(lineup: list, move: str):
-    print(f'Original\n{lineup}')
-    move_type, parameters = parse_move(move)
-    if move_type == 'x':
-        print(f'Move: {move}\n')
-        A, B = parameters
-        new_lineup = exchange(lineup, A, B)
-        print(f'Result\n{new_lineup}\n\n')
-        return new_lineup
-
-def test_partner(lineup: list, move: str):
-    print(f'Original\n{lineup}')
-    move_type, parameters = parse_move(move)
-    if move_type == 'p':
-        print(f'Move: {move}\n')
-        move_components = move[1:]
-        A, B = parameters
-        new_lineup = partner(lineup, A, B)
-        print(f'Result\n{new_lineup}\n\n')
-        return new_lineup
-
 def main(programs, moves):
 
     print(f'Original\n{"".join(programs)}\n')
