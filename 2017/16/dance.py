@@ -102,6 +102,11 @@ def make_move(lineup: list, move: str):
         lineup = partner(lineup, A, B)
     return lineup
     
+def dance (lineup: list, moves: list):
+    # for each move
+    for move in moves:
+        lineup = make_move(lineup, move)
+    return lineup
 
 def main():
     # given list of programs a-p
@@ -112,11 +117,9 @@ def main():
 
     print(f'Original\n{"".join(programs)}\n')
 
-    # for each move
-    for move in moves:
-        programs = make_move(programs, move)
+    programs = dance(programs, moves)
 
-    print(f'Part 1 Result\n{"".join(programs)}')
+    print(f'Part 1 Result\n{"".join(programs)}\n')
     pass
 
 if __name__ == "__main__":
