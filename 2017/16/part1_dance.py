@@ -139,6 +139,7 @@ def main(programs, moves):
             programs = partner(programs, A, B)
 
     print(f'Result\n{"".join(programs)}')
+    # part 1 answer: lgpkniodmjacfbeh
     pass
 
 if __name__ == "__main__":
