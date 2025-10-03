@@ -1,3 +1,4 @@
+import datetime
 parsed_moves = {}
 # parsed_moves = {
 #   'x1/3': {
@@ -123,8 +124,12 @@ def main():
 
     # Keeping the positions they ended up in from their previous dance
     # including the first dance, a total of one billion (1000000000) times.
+    start_time = datetime.datetime.now()
     for i in range(1000000000-1):
         programs = dance(programs, moves)
+        if i % 1000 == 0:
+
+            print(i, datetime.datetime.now()-start_time)
 
     print(f'Part 2 Result\n{"".join(programs)}\n')
 
