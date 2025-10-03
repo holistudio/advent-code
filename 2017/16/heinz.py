@@ -8,8 +8,27 @@ different quotient.
 from math import isqrt
 from fractions import Fraction
 
-# simple prime generator cache
-_primes = [2, 3, 5, 7, 11, 13]
+# simple prime generator
+
+def first_n_primes(n):
+    """Return a list of the first n prime numbers."""
+    primes = []
+    candidate = 2
+    while len(primes) < n:
+        is_prime = True
+        r = isqrt(candidate)
+        for p in primes:
+            if p > r:
+                break
+            if candidate % p == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(candidate)
+        candidate += 1
+    return primes
+
+_primes = first_n_primes(n=100)
 
 # -----------------------------------------------------------------------------
 # Helper: ensure we have enough primes in the cache
