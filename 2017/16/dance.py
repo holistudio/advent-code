@@ -9,7 +9,7 @@ parsed_moves = {}
 def read_input(filename: str):
     with open(filename) as f:
         moves = f.read().split(',')
-    print(len(moves))
+    # print(len(moves))
     return moves
 
 def spin(lineup: list, X: int):
