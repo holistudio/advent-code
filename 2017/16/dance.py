@@ -149,17 +149,16 @@ def main():
 
     # store dance results for checking if they repeat
     # dance_results = []
-    target_string = 'fhkcjnmolpgedbia'
+    # target_string = 'fhkcjnmolpgedbia'
 
-    # Keeping the positions they ended up in from their previous dance
-    # including the first dance, a total of one billion (1000000000) times.
+    # Used below code to figure out how often the dance cycle repeats
     # start_time = datetime.datetime.now()
-    for i in range(1000000000-1):
-        programs = same_dance(programs, moves)
-        p_string = "".join(programs)
-        if p_string == target_string:
-            print(i,p_string)
-            
+    # for i in range(1000000000-1):
+    #     programs = same_dance(programs, moves)
+    #     p_string = "".join(programs)
+    #     if p_string == target_string:
+    #         print(i,p_string)
+
         # if p_string not in dance_results:
         #     dance_results.append(p_string)
         # else:
@@ -167,9 +166,18 @@ def main():
         # if i % 1000 == 0:
             # print(i, datetime.datetime.now()-start_time)
 
-    # print(f'Part 2 Result\n{"".join(programs)}\n')
+    # Keeping the positions they ended up in from their previous dance
+    # including the first dance, a total of one billion (1000000000) times.
+    programs = [chr(x) for x in range(97,97+16)]
+    for i in range((1000000000 % 42)):
+        programs = same_dance(programs, moves)
+        p_string = "".join(programs)
+        print(p_string)
 
-    
+    print(f'Part 2 Result\n{"".join(programs)}\n')
+
+    # NOTE: in the second dance, all the partner moves may cancel out the partners moves from first dance
+    # and that means two dances can be completed via removing the partner moves from the list (not verified but proposed by others)
     pass
 
 if __name__ == "__main__":
