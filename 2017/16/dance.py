@@ -115,20 +115,10 @@ def main(programs: list, moves: list):
     pass
 
 if __name__ == "__main__":
-    # line = test_spin(programs, 's1')
-    # line = test_exchange(line, 'x3/4')
-    # line = test_partner(line, 'pe/b')
-
-    # programs = ['a','b','c','d','e']
-    # moves = ['s1', 'x3/4', 'pe/b']
-    # moves = ['s1', 'x3/4', 'pe/b', 'x3/4']
-
+    # given list of programs a-p
     programs = [chr(x) for x in range(97,97+16)]
 
     # read input.txt
     moves = read_input('input.txt')
-    # moves = ['s1', 'x3/4', 'pe/b']
 
     main(programs, moves)
-
-    # print(parsed_moves)
