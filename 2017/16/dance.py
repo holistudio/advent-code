@@ -148,7 +148,8 @@ def main():
     print(f'Part 1 Result\n{"".join(programs)}\n')
 
     # store dance results for checking if they repeat
-    dance_results = []
+    # dance_results = []
+    target_string = 'fhkcjnmolpgedbia'
 
     # Keeping the positions they ended up in from their previous dance
     # including the first dance, a total of one billion (1000000000) times.
@@ -156,10 +157,13 @@ def main():
     for i in range(1000000000-1):
         programs = same_dance(programs, moves)
         p_string = "".join(programs)
-        if p_string not in dance_results:
-            dance_results.append(p_string)
-        else:
-            print(i, p_string)
+        if p_string == target_string:
+            print(i,p_string)
+            
+        # if p_string not in dance_results:
+        #     dance_results.append(p_string)
+        # else:
+        #     print(i, p_string)
         # if i % 1000 == 0:
             # print(i, datetime.datetime.now()-start_time)
 
