@@ -120,6 +120,15 @@ def main():
     programs = dance(programs, moves)
 
     print(f'Part 1 Result\n{"".join(programs)}\n')
+
+    # Keeping the positions they ended up in from their previous dance
+    # including the first dance, a total of one billion (1000000000) times.
+    for i in range(1000000000-1):
+        programs = dance(programs, moves)
+
+    print(f'Part 2 Result\n{"".join(programs)}\n')
+
+    
     pass
 
 if __name__ == "__main__":
