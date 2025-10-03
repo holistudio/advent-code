@@ -149,14 +149,13 @@ def main():
 
     # Keeping the positions they ended up in from their previous dance
     # including the first dance, a total of one billion (1000000000) times.
-    start_time = datetime.datetime.now()
+    # start_time = datetime.datetime.now()
     for i in range(1000000000-1):
         programs = same_dance(programs, moves)
-        if i % 1000 == 0:
+        # if i % 1000 == 0:
+            # print(i, datetime.datetime.now()-start_time)
 
-            print(i, datetime.datetime.now()-start_time)
-
-    print(f'Part 2 Result\n{"".join(programs)}\n')
+    # print(f'Part 2 Result\n{"".join(programs)}\n')
 
     
     pass
