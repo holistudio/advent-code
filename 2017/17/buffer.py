@@ -10,7 +10,7 @@ def insert_ix(buffer_len, i, x):
             i += 1
         else:
             i = 0
-        print(i)
+        # print(i)
     return i
     
 def main(x):
@@ -21,14 +21,15 @@ def main(x):
 
     # for v in range(1, 2017+1):
     for v in range(1, 9+1):
-        print(f'ix_0 = {ix}')
+        # print(f'ix_0 = {ix}')
+
         # step forward circular buffer in x steps
         ix = insert_ix(len(buffer), ix+1, x)
-        print(f'ix_1 = {ix}')
+        # print(f'ix_1 = {ix}')
 
+        # insert value at current position
+        # split the buffer into two
         if len(buffer) > 1:
-            # insert value=1 at current position
-            # split the buffer into two
             left_half = buffer[:ix+1]
             right_half = buffer[ix+1:]
         else:
@@ -38,9 +39,9 @@ def main(x):
         # recombine
         buffer = left_half + [v] + right_half
 
-        print(buffer)
-
-        # repeat but now insert value=2
+    print(f"Final Buffer:  {buffer}")
+    print(f"Last Inserted: {buffer[ix+1]}")
+    print(f"Value After:   {buffer[ix+2]}")
 
 if __name__ == "__main__":
     main(3)
