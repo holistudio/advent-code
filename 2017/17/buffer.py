@@ -6,10 +6,11 @@ def insert_ix(buffer_len, i, x):
 
     # step forward circular buffer in x steps
     for s in range(x):
-        if s < buffer_len:
+        if i < buffer_len-1:
             i += 1
         else:
             i = 0
+        print(i)
     return i
     
 def main(x):
@@ -19,15 +20,17 @@ def main(x):
     ix = 0
 
     # for v in range(1, 2017+1):
-    for v in range(1, 8+1):
+    for v in range(1, 9+1):
+        print(f'ix_0 = {ix}')
         # step forward circular buffer in x steps
-        ix = insert_ix(len(buffer), ix, x)
+        ix = insert_ix(len(buffer), ix+1, x)
+        print(f'ix_1 = {ix}')
 
         if len(buffer) > 1:
             # insert value=1 at current position
             # split the buffer into two
-            left_half = buffer[:ix]
-            right_half = buffer[ix:]
+            left_half = buffer[:ix+1]
+            right_half = buffer[ix+1:]
         else:
             left_half = buffer
             right_half = []
