@@ -1,6 +1,9 @@
 def insert_ix(buffer_len, i, x):
     """
-    given a buffer of a specific
+    given a circular buffer of a specific length, buffer_len
+    and a starting pointer index value, i
+    determine the insertion point after moving the pointer
+    x steps
     """
     # TODO: compute directly?
 
