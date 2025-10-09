@@ -43,4 +43,4 @@ def main(steps, max_value):
     print(f"Value After:   {buffer[ix+2]}")
 
 if __name__ == "__main__":
-    main(steps=3, max_value=2017)
+    main(steps=355, max_value=2017)
