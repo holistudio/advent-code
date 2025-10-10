@@ -1,0 +1,49 @@
+def insert_ix(buffer_len, i, x):
+    """
+    given a circular buffer of a specific length, buffer_len
+    and a starting pointer index value, i
+    determine the insertion point after moving the pointer
+    x steps
+    """
+    # TODO: compute directly?
+
+    # step forward circular buffer in x steps
+    for s in range(x):
+        if i < buffer_len-1:
+            i += 1
+        else:
+            i = 0
+        # print(i)
+    return i
+    
+def main(steps, max_value):
+    # starts with a circular buffer containing only the value `0`
+    buffer = [0]
+
+    ix = 0
+
+    for v in range(1, max_value+1):
+        # print(f'ix_0 = {ix}')
+
+        # step forward circular buffer in _ steps
+        ix = insert_ix(len(buffer), ix+1, steps)
+        # print(f'ix_1 = {ix}')
+
+        # insert value at current position
+        # split the buffer into two
+        if len(buffer) > 1:
+            left_half = buffer[:ix+1]
+            right_half = buffer[ix+1:]
+        else:
+            left_half = buffer
+            right_half = []
+
+        # recombine
+        buffer = left_half + [v] + right_half
+
+    # print(f"Final Buffer:  {buffer}")
+    print(f"Last Inserted: {buffer[ix+1]}")
+    print(f"Value After:   {buffer[ix+2]}")
+
+if __name__ == "__main__":
+    main(steps=355, max_value=2017)
