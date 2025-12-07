@@ -1,4 +1,5 @@
 MAX_DIAL_VALUE = 99
+global COUNTER
 
 def dial(value):
     
@@ -29,7 +30,7 @@ def parse(line):
     return direction, distance
 
 def read_rotations(txt):
-    counter = 0
+    COUNTER = 0
     with open(txt,'r') as f:
         rotation_list = f.read().split('\n')
     value = 50
@@ -40,8 +41,8 @@ def read_rotations(txt):
         print(direction, distance)
         value = rotation(value, direction, distance)
         if value == 0:
-            counter += 1
-    return counter
+            COUNTER += 1
+    return COUNTER
 
 if __name__ == '__main__':
     print(read_rotations('input.txt'))
