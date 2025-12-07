@@ -6,15 +6,11 @@ def dial(value):
     if value < 0:
         mult = -value // reset_value
         remaining = value + mult * reset_value
-        print(f'dial(): {value}, {(reset_value + remaining) % reset_value}')
         return (reset_value + remaining) % reset_value
     if value > MAX_DIAL_VALUE:
         mult = value // reset_value
         remaining = value - mult * reset_value
-        print(f'dial(): {value}, {remaining % reset_value}')
         return remaining % reset_value
-        
-    print(f'dial(): {value}, {value}')
     return value
     
 def rotation(value, direction, distance):
@@ -33,11 +29,8 @@ def read_rotations(txt):
     with open(txt,'r') as f:
         rotation_list = f.read().split('\n')
     value = 50
-    print(f'initial value = {value}')
     for r in rotation_list:
-        print()
         direction, distance = parse(r)
-        print(direction, distance)
         value = rotation(value, direction, distance)
         if value == 0:
             counter += 1
