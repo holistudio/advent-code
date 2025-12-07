@@ -53,6 +53,6 @@ def part2(input_list):
     return sum
 
 if __name__ == '__main__':
-    with open('example.txt') as f:
+    with open('input.txt') as f:
         input_list = f.read().split(',')
     print(part2(input_list))
