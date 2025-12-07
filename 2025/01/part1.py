@@ -20,12 +20,16 @@ def parse(line):
     return direction, distance
 
 def read_rotations(txt):
+    counter = 0
     with open(txt,'r') as f:
         rotation_list = f.read().split('\n')
     value = 50
     for r in rotation_list:
         direction, distance = parse(r)
         value = rotation(value, direction, distance)
+        if value == 0:
+            counter += 1
+    return counter
 
 if __name__ == '__main__':
-    read_rotations('test.txt')
+    print(read_rotations('test.txt'))
