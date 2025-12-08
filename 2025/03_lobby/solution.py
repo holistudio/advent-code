@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 def part1(batteries):
     total_joltage = 0
     for bank in batteries:
