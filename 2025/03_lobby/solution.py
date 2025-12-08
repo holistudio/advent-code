@@ -14,9 +14,7 @@ def part1(batteries):
 def part2(batteries):
     total_joltage = 0
     for bank in batteries:
-        print(bank)
         ints = [int(c) for c in bank]
-        
         n = 12
         max_joltage = ''
         while n > 0:
@@ -27,8 +25,6 @@ def part2(batteries):
             max_joltage += max_digit
             n -= 1
             ints = ints[ints.index(max(ints[:ix]))+1:]
-        print(max_joltage)
-        print()
         total_joltage += int(max_joltage)
     return total_joltage
 
