@@ -33,7 +33,7 @@ def part2(batteries):
     return total_joltage
 
 if __name__ == '__main__':
-    with open('example.txt') as f:
+    with open('input.txt') as f:
         batteries = f.read().split('\n')
-    # print(part1(batteries))
+    print(part1(batteries))
     print(part2(batteries))
