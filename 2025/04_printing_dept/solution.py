@@ -29,7 +29,6 @@ def part1(grid):
                         window = [grid[i-1][j-1:], grid[i][j-1:]]
                 window = ''.join(window)
                 if window.count('@') - 1 < 4:
-                    # print(i,j, window)
                     grid_copy[i] = grid_copy[i][:j] + '.' + grid_copy[i][j+1:] 
                     count += 1
     return count, grid_copy
@@ -42,11 +41,9 @@ def part2(grid):
         total += count
     return total
 
-
-
 if __name__ == "__main__":
     grid = []
-    with open("example.txt") as f:
+    with open("input.txt") as f:
         grid = f.read().split('\n')
     print(part1(grid)[0])
     print(part2(grid))
