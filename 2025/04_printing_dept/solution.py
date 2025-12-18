@@ -34,6 +34,6 @@ def part1(grid):
 
 if __name__ == "__main__":
     grid = []
-    with open("example.txt") as f:
+    with open("input.txt") as f:
         grid = f.read().split('\n')
     print(part1(grid))
