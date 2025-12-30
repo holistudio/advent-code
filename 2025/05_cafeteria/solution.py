@@ -43,6 +43,38 @@ def part2(ranges):
         if distinct:
             distinct_ranges.append(new_range)
         
+        idx = 0
+        while idx < len(distinct_ranges):
+            current_range = distinct_ranges[idx]
+            current_min, current_max = current_range[0], current_range[1]
+            jdx = idx+1
+            no_merge = True
+            while jdx < len(distinct_ranges):
+                range_min, range_max = distinct_ranges[jdx][0], distinct_ranges[jdx][1]
+                #       case 1:  current_min in between range_min and range_max
+                if (range_min <= current_min <= range_max) and (current_max >= range_max):
+                    distinct_ranges[jdx][1] = current_max
+                    distinct_ranges.pop(idx)
+                    no_merge = False
+                #       case 2:  current_max in between range_min and range_max
+                elif (range_min <= current_max <= range_max) and (current_min <= range_min):
+                    distinct_ranges[idx][1] = range_max
+                    distinct_ranges.pop(jdx)
+                    no_merge = False
+                #       case 3:  current_range INSIDE range_min and range_max
+                elif range_min > current_min and range_max < current_max:
+                    distinct_ranges.pop(idx)
+                    no_merge = False
+                #       case 4:  new_range INSIDE current_range
+                elif current_min > range_min and current_max < range_max:
+                    distinct_ranges.pop(jdx)
+                    no_merge = False
+                else:
+                    jdx += 1
+            if no_merge:
+                idx += 1
+
+
         print(f'AFTER: {distinct_ranges}\n')
     
     # print(distinct_ranges)
