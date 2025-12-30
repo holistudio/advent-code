@@ -7,21 +7,54 @@ def part1(ranges, ids):
                 break
     return fresh
 
-def part2():
-    # current_range: current_min, current_max
+def part2(ranges):
+    distinct_ranges = [ranges[0]]
     # for each new range:
-    # new_range: new_min, new_max
-    #   check every existing range
-    #       case 1:  new_min in between current_min and current_max
-    #       case 2:  new_max in between current_min and current_max
-    #       case 3:  current_range INSIDE new_range
-    #       case 4:  new_range INSIDE current_range
-    #       case 5:  new_range OUTSIDE current_range
-    pass
+    for new_range in ranges[1:]:
+        print(f'new_range: {new_range}')
+        print(f'BEFORE: {distinct_ranges}')
+        # new_range: new_min, new_max
+        new_min, new_max = new_range[0], new_range[1]
+
+        distinct = True
+        # check every existing range
+        for current_range in distinct_ranges:
+            # current_range: current_min, current_max
+            current_min, current_max = current_range[0], current_range[1]
+            #       case 1:  new_min in between current_min and current_max
+            if (current_min <= new_min <= current_max) and (new_max >= current_max):
+                current_range[1] = new_max
+                distinct = False
+            #       case 2:  new_max in between current_min and current_max
+            elif (current_min <= new_max <= current_max) and (new_min <= current_min):
+                current_range[0] = new_min
+                distinct = False
+            #       case 3:  current_range INSIDE new_range
+            elif current_min > new_min and current_max < new_max:
+                current_range[0] = new_min
+                current_range[1] = new_max
+                distinct = False
+            #       case 4:  new_range INSIDE current_range
+            elif new_min > current_min and new_max < current_max:
+                distinct = False
+                continue
+
+        #       case 5:  new_range OUTSIDE current_range
+        if distinct:
+            distinct_ranges.append(new_range)
+        
+        print(f'AFTER: {distinct_ranges}\n')
+    
+    # print(distinct_ranges)
+    count = 0
+    for id_range in distinct_ranges:
+        count += id_range[1] - id_range[0] + 1 
+    
+    return count
 
 
 if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+    with open('example.txt', 'r') as f:
         lines = f.read().split('\n')
     split_ix = lines.index('')
     ranges = [a.split('-') for a in lines[:split_ix]]
@@ -29,4 +62,5 @@ if __name__ == '__main__':
     ids = [int(id) for id in lines[split_ix+1:]]
     # print(ranges)
     # print(ids)
-    print(part1(ranges, ids))
+    # print(part1(ranges, ids))
+    print(part2(ranges))
