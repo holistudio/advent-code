@@ -64,7 +64,7 @@ def part2(ranges):
                 elif range_min > current_min and range_max < current_max:
                     distinct_ranges.pop(idx)
                     no_merge = False
-                #       case 4:  new_range INSIDE current_range
+                #       case 4:  range_min and range_max INSIDE current_range
                 elif current_min > range_min and current_max < range_max:
                     distinct_ranges.pop(jdx)
                     no_merge = False
