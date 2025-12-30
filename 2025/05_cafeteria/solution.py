@@ -8,7 +8,7 @@ def part1(ranges, ids):
     return fresh
 
 if __name__ == '__main__':
-    with open('example.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         lines = f.read().split('\n')
     split_ix = lines.index('')
     ranges = [a.split('-') for a in lines[:split_ix]]
