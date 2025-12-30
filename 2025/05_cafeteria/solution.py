@@ -11,8 +11,6 @@ def part2(ranges):
     distinct_ranges = [ranges[0]]
     # for each new range:
     for new_range in ranges[1:]:
-        # print(f'new_range: {new_range}')
-        # print(f'BEFORE: {distinct_ranges}')
         # new_range: new_min, new_max
         new_min, new_max = new_range[0], new_range[1]
 
@@ -43,6 +41,7 @@ def part2(ranges):
         if distinct:
             distinct_ranges.append(new_range)
         
+        # then check inside distinct_ranges to see if any ranges needed to be merged
         idx = 0
         while idx < len(distinct_ranges):
             current_range = distinct_ranges[idx]
@@ -73,11 +72,7 @@ def part2(ranges):
                     jdx += 1
             if no_merge:
                 idx += 1
-
-
-        # print(f'AFTER: {distinct_ranges}\n')
-    
-    # print(distinct_ranges)
+                
     count = 0
     for id_range in distinct_ranges:
         count += id_range[1] - id_range[0] + 1 
@@ -92,7 +87,6 @@ if __name__ == '__main__':
     ranges = [a.split('-') for a in lines[:split_ix]]
     ranges = [[int(a), int(b)] for a,b in ranges]
     ids = [int(id) for id in lines[split_ix+1:]]
-    # print(ranges)
-    # print(ids)
-    # print(part1(ranges, ids))
+
+    print(part1(ranges, ids))
     print(part2(ranges))
