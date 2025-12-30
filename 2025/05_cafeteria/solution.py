@@ -11,8 +11,8 @@ def part2(ranges):
     distinct_ranges = [ranges[0]]
     # for each new range:
     for new_range in ranges[1:]:
-        print(f'new_range: {new_range}')
-        print(f'BEFORE: {distinct_ranges}')
+        # print(f'new_range: {new_range}')
+        # print(f'BEFORE: {distinct_ranges}')
         # new_range: new_min, new_max
         new_min, new_max = new_range[0], new_range[1]
 
@@ -75,7 +75,7 @@ def part2(ranges):
                 idx += 1
 
 
-        print(f'AFTER: {distinct_ranges}\n')
+        # print(f'AFTER: {distinct_ranges}\n')
     
     # print(distinct_ranges)
     count = 0
@@ -86,7 +86,7 @@ def part2(ranges):
 
 
 if __name__ == '__main__':
-    with open('example.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         lines = f.read().split('\n')
     split_ix = lines.index('')
     ranges = [a.split('-') for a in lines[:split_ix]]
