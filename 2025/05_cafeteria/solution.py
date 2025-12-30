@@ -7,6 +7,19 @@ def part1(ranges, ids):
                 break
     return fresh
 
+def part2():
+    # current_range: current_min, current_max
+    # for each new range:
+    # new_range: new_min, new_max
+    #   check every existing range
+    #       case 1:  new_min in between current_min and current_max
+    #       case 2:  new_max in between current_min and current_max
+    #       case 3:  current_range INSIDE new_range
+    #       case 4:  new_range INSIDE current_range
+    #       case 5:  new_range OUTSIDE current_range
+    pass
+
+
 if __name__ == '__main__':
     with open('input.txt', 'r') as f:
         lines = f.read().split('\n')
