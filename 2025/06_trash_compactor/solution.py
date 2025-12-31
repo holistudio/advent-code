@@ -62,7 +62,6 @@ if __name__ == '__main__':
         operations = []
         numbers = []
         for i, op in enumerate(lines[-1]):
-            
             if op != ' ':
                 operations.append(op)
                 if not lines[-1][i+1:].isspace():
