@@ -1,31 +1,40 @@
+
 def part_1(numbers, operations):
     total = 0
+    N = len(numbers[0])
     for nums, op in zip(numbers, operations):
-        num1, num2, num3 = nums
-
+        num1 = nums[0]
         if op == '*':
-            total += num1 * num2 * num3
+            for i in range(1,N):
+                num1 = num1 * nums[i]
         elif op == '+':
-            total += num1 + num2 + num3
+            for i in range(1,N):
+                num1 = num1 + nums[i]
         else:
+            print(op)
             raise ValueError('Invalid operation string found') 
-        
+        total += num1
     return total
 
 if __name__ == '__main__':
-    with open('example.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         lines = f.read().split('\n')
 
-        num1 = lines[0].split(' ')
-        num2 = lines[1].split(' ')
-        num3 = lines[2].split(' ')
-        operations = lines[3].split('   ')
-    
-    num1 = [int(n) for n in num1 if n != '']
-    num2 = [int(n) for n in num2 if n != '']
-    num3 = [int(n) for n in num3 if n != '']
-    numbers = [(n1,n2,n3) for n1, n2, n3 in zip(num1, num2, num3)]
+        nums = []
+        N = len(lines[:-1])
+        for line in lines[:-1]:
+            num = line.split(' ')
+            num = [int(n) for n in num if n != '']
+            nums.append(num)
+        
+        numbers = []
+        for i in range(len(nums[0])):
+            column = []
+            for j in range(N):
+                column.append(nums[j][i])
+            numbers.append(column)
 
-    operations[-1] = operations[-1].rstrip()
-    
+        operations = lines[-1]
+        operations = [o for o in operations if o !=' ']
+
     print(part_1(numbers, operations))
