@@ -19,7 +19,7 @@ def display_world(grid_world):
 
 if __name__ == '__main__':
     # load the grid world
-    with open('example.txt','r') as f:
+    with open('input.txt','r') as f:
         grid_world = f.read().split('\n')
     display_world(grid_world)
 
@@ -85,6 +85,7 @@ if __name__ == '__main__':
         if num_done == len(beams):
             terminal = True
     
-        display_world(grid_world)
-        print(split_count)
+    display_world(grid_world)
+    
+    print(split_count)
     pass
