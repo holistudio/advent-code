@@ -7,10 +7,13 @@ class Beam(object):
     def step(self):
         self.r += 1
         pass
+
 def display_world(grid_world):
     for line in grid_world:
         print(line)
     print()
+    pass
+
 if __name__ == '__main__':
     # load the grid world
     with open('example.txt','r') as f:
