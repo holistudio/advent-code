@@ -75,15 +75,20 @@ if __name__ == '__main__':
         #     i += 1
 
         # draw beams on grid world
-        num_done = 0
-        for beam in beams:
-            grid_world[beam.r] = grid_world[beam.r][:beam.c] + '|' + grid_world[beam.r][beam.c+1:]
-            if beam.done:
-                num_done += 1
+        # num_done = 0
+        # for beam in beams:
+        #     grid_world[beam.r] = grid_world[beam.r][:beam.c] + '|' + grid_world[beam.r][beam.c+1:]
+        #     if beam.done:
+        #         num_done += 1
 
         # check if all beams are done then terminate the loop
-        if num_done == len(beams):
-            terminal = True
+        # if num_done == len(beams):
+        #     terminal = True
+        terminal = True
+        for beam in beams:
+            if not beam.done:
+                terminal = False
+                break
     
     # display_world(grid_world)
 
