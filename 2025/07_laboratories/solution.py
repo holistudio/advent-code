@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # load the grid world
     with open('example.txt','r') as f:
         grid_world = f.read().split('\n')
-    display_world(grid_world)
+    # display_world(grid_world)
 
     R = len(grid_world)
     C = len(grid_world[0])
@@ -36,25 +36,27 @@ if __name__ == '__main__':
     terminal = False
     while not terminal:
         for beam in beams:
-            if beam.r < R-1:
-                # if there's nothing in front of the beam
-                # move it a step
-                beam.step()
-            else:
-                # if the beam is at the end of the grid world, mark it done
-                beam.done = True
+            if not beam.done:
+                if beam.r < R-1:
+                    # if there's nothing in front of the beam
+                    # move it a step
+                    beam.step()
+                else:
+                    # if the beam is at the end of the grid world, mark it done
+                    beam.done = True
 
         # split beams
         for beam in beams:
-            # if the beam has a splitter in front of it
-            if grid_world[beam.r][beam.c] == '^':
-                split_count += 1
-                # copy it at a new position, 1 unit to the right
-                beams.append(copy.deepcopy(beam))
-                beams[-1].c += 1
+            if not beam.done:
+                # if the beam has a splitter in front of it
+                if grid_world[beam.r][beam.c] == '^':
+                    split_count += 1
+                    # copy it at a new position, 1 unit to the right
+                    beams.append(copy.deepcopy(beam))
+                    beams[-1].c += 1
 
-                # move it a step forward and to the left
-                beam.c -= 1
+                    # move it a step forward and to the left
+                    beam.c -= 1
 
         # check if any beams are overlapping existing beams
         # and remove them
@@ -89,6 +91,9 @@ if __name__ == '__main__':
             if not beam.done:
                 terminal = False
                 break
+
+        print(beams[0].r/R, len(beams))
+        print()
     
     # display_world(grid_world)
 
