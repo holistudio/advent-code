@@ -19,7 +19,7 @@ def display_world(grid_world):
 
 if __name__ == '__main__':
     # load the grid world
-    with open('input.txt','r') as f:
+    with open('example.txt','r') as f:
         grid_world = f.read().split('\n')
     display_world(grid_world)
 
@@ -58,21 +58,21 @@ if __name__ == '__main__':
 
         # check if any beams are overlapping existing beams
         # and remove them
-        for beam in beams:
-            if grid_world[beam.r][beam.c] == '|':
-                beams.pop(beams.index(beam))
+        # for beam in beams:
+        #     if grid_world[beam.r][beam.c] == '|':
+        #         beams.pop(beams.index(beam))
 
-        i = 0
-        while i < (len(beams) - 1):
-            j = i+1
-            while j < len(beams):
-                beam_i = beams[i]
-                beam_j = beams[j]
-                if beam_i.r == beam_j.r and beam_i.c == beam_j.c:
-                    beams.pop(j)
-                else:
-                    j += 1
-            i += 1
+        # i = 0
+        # while i < (len(beams) - 1):
+        #     j = i+1
+        #     while j < len(beams):
+        #         beam_i = beams[i]
+        #         beam_j = beams[j]
+        #         if beam_i.r == beam_j.r and beam_i.c == beam_j.c:
+        #             beams.pop(j)
+        #         else:
+        #             j += 1
+        #     i += 1
 
         # draw beams on grid world
         num_done = 0
@@ -85,7 +85,8 @@ if __name__ == '__main__':
         if num_done == len(beams):
             terminal = True
     
-    display_world(grid_world)
-    
-    print(split_count)
+    # display_world(grid_world)
+
+    # print(split_count)
+    print(len(beams))
     pass
