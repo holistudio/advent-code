@@ -25,8 +25,9 @@ if __name__ == '__main__':
         "c":0,
         "done": False
     }
+
     # load the grid world
-    with open('example.txt','r') as f:
+    with open('input.txt','r') as f:
         grid_world = f.read().split('\n')
     # display_world(grid_world)
 
@@ -114,14 +115,9 @@ if __name__ == '__main__':
             if not beam['done']:
                 terminal = False
                 break
-
-        # step_time = datetime.datetime.now()-start_time
-        # print(datetime.datetime.now(), beams[0]['r']/R, len(beams))
-        # print(f'est step time={step_time*len(beams)/prev_len}')
-        # print()
     
     display_world(grid_world)
 
     print(split_count)
-    print(len(beams))
+    # print(len(beams))
     pass
